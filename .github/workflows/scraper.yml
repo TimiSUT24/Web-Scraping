@@ -25,6 +25,6 @@ jobs:
 
       - name: Run scrape & upload
         env:
-          UPLOAD_API_URL: ${{ secrets.UPLOAD_API_URL }}
-          UPLOADEVENTSKEY: ${{ secrets.UPLOADEVENTSKEY }}
-        run: node scrapeAndUpload.js
+          Upload_API_URL: ${{ secrets.UPLOAD_API_URL }}
+          UploadEventsKey: ${{ secrets.UPLOADEVENTSKEY }}
+        run: node uploadEvents.js
