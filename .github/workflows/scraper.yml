@@ -8,6 +8,7 @@ on:
 jobs:
   run-scraper:
     runs-on: ubuntu-latest
+    environment: WebScrapeSecrets
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
