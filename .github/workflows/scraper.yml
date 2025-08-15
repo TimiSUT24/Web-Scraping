@@ -1,0 +1,30 @@
+name: Daily Scraper
+
+on:
+  schedule:
+    - cron: "0 4 * * *" # Runs daily at 06:00 UTC
+  workflow_dispatch: # Optional: allows manual run
+
+jobs:
+  run-scraper:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run scrape & upload
+        env:
+          UPLOAD_API_URL: ${{ secrets.UPLOAD_API_URL }}
+          UPLOADEVENTSKEY: ${{ secrets.UPLOADEVENTSKEY }}
+        run: node scrapeAndUpload.js
