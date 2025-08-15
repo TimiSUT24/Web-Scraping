@@ -3,7 +3,7 @@ const fs = require('fs');
 const falkenbergUrl ='https://www.falkenberg.se/evenemang';
 
 (async () => {
-    const browser = await chromium.launch({ headless: false, slowMo: 100 });
+    const browser = await chromium.launch({ headless: true, slowMo: 100 });
     const page = await browser.newPage();
 
     await page.goto(`${falkenbergUrl}`, { waitUntil: 'domcontentloaded' });
