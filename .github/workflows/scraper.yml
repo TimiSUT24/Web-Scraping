@@ -28,4 +28,4 @@ jobs:
         env:
           Upload_API_URL: ${{ secrets.UPLOAD_API_URL }}
           UploadEventsKey: ${{ secrets.UPLOADEVENTSKEY }}
-        run: node uploadEvents.js
+        run: node scrapeAndUpload.js
