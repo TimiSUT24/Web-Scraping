@@ -1,0 +1,14 @@
+name: Keep Render Awake
+
+on:
+  schedule:
+    - cron: "*/10 * * * *" # every 10 minutes
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    environment: Pinger
+    steps:
+      - name: Ping Render API
+        run: curl -s ${{ secrets.PINGERURL }} || true
